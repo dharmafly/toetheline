@@ -28,3 +28,29 @@ div.main.lower {
 	background-color: #FF0000;
 	height: 140px;
 }
+
+
+/****** MP POSITIONING AND SIZING ******/
+div.mp {
+	position: absolute;
+}
+
+div.mp.position-0 {
+	left: 600px;
+	bottom: 80px;
+}
+div.mp.position-0 img {
+	height: 100px;
+}
+
+div.mp.position-1 {
+	left: 500px;
+	bottom: 20px;
+}
+div.mp.position-1 img {
+	height: 80px;
+}
+
+
+
+
