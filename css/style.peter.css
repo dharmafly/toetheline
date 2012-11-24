@@ -1,0 +1,30 @@
+body {
+	background-color: #929292;
+}
+
+div.wrapper {
+}
+
+div.main.upper {
+	background-color: #BDCCD4;
+	margin-top: 50px;
+	height: 320px;
+	position: relative;
+}
+
+div.main.upper div.title {
+	position: absolute;
+	bottom: 0;
+	left: 100px;
+	width: 100%;
+}
+div.main.upper h2 {
+	font-size: 65px;
+	line-height: 69%;
+	font-weight: 900;
+	font-family: helvetica;
+}
+div.main.lower {
+	background-color: #FF0000;
+	height: 140px;
+}
