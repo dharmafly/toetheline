@@ -37,12 +37,12 @@ jQuery(function() {
 //    var rebelWidths = [160, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]; //rebel image widths
 
     var policyIndex = 0;
-    //var policyKeys = _.keys(policies);
 
     var rebelDataKeys = _.keys(rebelData);
     mps = rebelData.mps;
     var mpKeys = _.keys(mps);
     policies = rebelData.policies;
+    var policyKeys = _.keys(policies);
 
 //    var data = [{name: 'Crispin Blunt', avatar: 'http://www.theyworkforyou.com/images/mps/10051.jpg'},
 //				{name: 'Diane Abbott', avatar: 'http://www.theyworkforyou.com/images/mpsL/10001.jpeg'}];
@@ -55,7 +55,7 @@ jQuery(function() {
 
 
 	function displayPolicy(p) {
-		var rebelAreaHeight = 200, rebelYScale = 10, xCenter = 590;
+		var rebelAreaHeight = 200, rebelYScale = 3, xCenter = 590;
 		var policy = policies[p];
 		var rebels = policy.rebels;
 		//console.log(rebels);
