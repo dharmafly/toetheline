@@ -173,7 +173,7 @@ var colors = {
 			policyIndex = 0;
 
 		resetRebels();
-		displayPolicy(_.keys(policies)[policyIndex]);
+		displayPolicy(policyKeys[policyIndex]);
 	});
 
 	jQuery('div.banner .prev.button').on('click', function() {
@@ -182,7 +182,7 @@ var colors = {
 			policyIndex = policyKeys.length - 1;
 
 		resetRebels();
-		displayPolicy(_.keys(policies)[policyIndex]);
+		displayPolicy(policyKeys[policyIndex]);
 	});
 
 
