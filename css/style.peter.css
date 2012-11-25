@@ -123,11 +123,20 @@ div.banner .button.prev {
 #logo {
 	width: 200px;
 	position: absolute;
-	right: -40px;
-	top: -20px;	
+	right: -120px;
+	top: 13px;	
 }
-#logo img {
-	width: 100%;
+
+#more-info {
+	position: absolute;
+	top: 95px;
+	right: 12px;
+	font-weight: 0.8em;
+	margin:0;
+	padding:0;
+}
+#more-info a {
+	color: #333;
 }
 
 #scale {
