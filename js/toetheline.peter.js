@@ -142,7 +142,12 @@ var colors = {
 				row++;
 
 			//console.log('row now '+row);
+			//console.log(rebel.rebelliousness);
 
+			if(i===0) {
+				width *= 1.5;
+				x -= 25;
+			}
 
 			//console.log(mpElement);
 			mpElement.addClass('rebel')
@@ -182,7 +187,9 @@ var colors = {
 
 
 	jQuery('.mp.rebel').hover(function() {
-		e.find('.info').show();
+		$(this).find('.info').show();
+		alert();
+		console.log($(this).find('.info'));
 	});
 
 
