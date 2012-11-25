@@ -42,7 +42,12 @@ div.below {
 /****** MP POSITIONING AND SIZING ******/
 div.mp {
 	display: inline;
+	transition: top 1s;
+	-moz-transition: top 1s;
 	-webkit-transition: top 1s;
+	-o-transition: top 1s;
+	-ms-transition: top 1s;
+	-khtml-transition: top 1s;
 /*	position: absolute;*/
 }
 div.mp .name {
