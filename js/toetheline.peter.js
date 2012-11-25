@@ -113,7 +113,8 @@ var colors = {
 
 
 	function displayPolicy(p) {
-		var rebelAreaHeight = 200, rebelYScale = 3.5, xCenter = 590;
+		var width = jQuery('.wrapper').width(),
+			rebelAreaHeight = 200, rebelYScale = 3.5, xCenter = width / 2;
 		var policy = policies[p];
 		var rebels = policy.rebels;
 
