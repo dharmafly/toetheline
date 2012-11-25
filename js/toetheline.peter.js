@@ -116,8 +116,7 @@ var colors = {
 		var rebelAreaHeight = 200, rebelYScale = 3.5, xCenter = 590;
 		var policy = policies[p];
 		var rebels = policy.rebels;
-		console.log('Displaying policy '+p);
-		//console.log(rebels);
+
 		var row = 0;
 		for(var i=0, len = rebels.length; i<len; i++) {
 			if(i >= 10)
@@ -144,7 +143,6 @@ var colors = {
 
 			//console.log('row now '+row);
 
-			console.log(rebel.rebelliousness);
 
 			//console.log(mpElement);
 			mpElement.addClass('rebel')
