@@ -34,7 +34,7 @@ div.banner h2 {
 }
 div.below {
 	background-color: white;
-	height: 2000px; /* makes calculating y position of rebels more predictable */
+	height: 3000px; /* makes calculating y position of rebels more predictable */
 }
 
 

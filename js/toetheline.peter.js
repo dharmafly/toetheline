@@ -42,7 +42,11 @@ jQuery(function() {
     mps = rebelData.mps;
     var mpKeys = _.keys(mps);
     policies = rebelData.policies;
-    var policyKeys = _.keys(policies);
+
+
+//    var policyKeys = _.keys(policies);
+
+    var policyKeys = [230, 258, 358, 793, 797, 981, 1053, 1065];
 
 //    var data = [{name: 'Crispin Blunt', avatar: 'http://www.theyworkforyou.com/images/mps/10051.jpg'},
 //				{name: 'Diane Abbott', avatar: 'http://www.theyworkforyou.com/images/mpsL/10001.jpeg'}];
@@ -55,15 +59,20 @@ jQuery(function() {
 
 
 	function displayPolicy(p) {
-		var rebelAreaHeight = 200, rebelYScale = 3, xCenter = 590;
+		var rebelAreaHeight = 200, rebelYScale = 3.5, xCenter = 590;
 		var policy = policies[p];
 		var rebels = policy.rebels;
+		console.log('Displaying policy '+p);
 		//console.log(rebels);
 		var row = 0;
 		for(var i=0, len = rebels.length; i<len; i++) {
 			if(i >= 10)
 				break;
 			var rebel = rebels[i];
+
+			if(rebel.rebelliousness === 0)
+				break;
+
 			var mp = mps[rebel.mp];
 			//console.log('positioning rebel '+rebel.mp);
 			var mpElement = jQuery('div.mp.'+mp.id);
@@ -80,6 +89,8 @@ jQuery(function() {
 				row++;
 
 			//console.log('row now '+row);
+
+			console.log(rebel.rebelliousness);
 
 			//console.log(mpElement);
 			mpElement.addClass('rebel')
@@ -125,7 +136,7 @@ jQuery(function() {
 
 
 	///// INIT
-	displayPolicy(813);
+	displayPolicy(policyKeys[0]);
 
 
 //	resetRebels();
