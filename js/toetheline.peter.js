@@ -162,6 +162,8 @@ var colors = {
 		jQuery('.mp.rebel').removeClass('rebel');
 	}
 
+
+	///// UI
 	jQuery('div.banner .next.button').on('click', function() {
 		policyIndex++;
 		if(policyIndex >= policyKeys.length)
@@ -181,7 +183,9 @@ var colors = {
 	});
 
 
-
+	jQuery('.mp.rebel').hover(function() {
+		e.find('.info').show();
+	});
 
 
 

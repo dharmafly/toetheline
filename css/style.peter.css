@@ -73,6 +73,12 @@ div.mp.rebel img {
 	opacity: 1;
 }
 
+/* mp info popup */
+div.mp .info {
+	position: absolute;
+	display: none;
+}
+
 
 /*div.mp.position-0 {
 	left: 600px;
@@ -120,9 +126,13 @@ div.banner .button.prev {
 
 #scale {
 	position: absolute;
-	left: 30px;
+	left: 20px;
 	bottom: 0px;
 }
 #scale img {
-	height: 90%;
+	height: 80%;
+}
+#fist {
+	position: absolute;
+	top: 5px;
 }
