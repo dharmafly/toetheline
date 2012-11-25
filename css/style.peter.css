@@ -41,6 +41,7 @@ div.below {
 /****** MP POSITIONING AND SIZING ******/
 div.mp {
 	display: inline;
+	-webkit-transition: top 1s;
 /*	position: absolute;*/
 }
 div.mp .name {
