@@ -51,10 +51,64 @@ jQuery(function() {
 //    var data = [{name: 'Crispin Blunt', avatar: 'http://www.theyworkforyou.com/images/mps/10051.jpg'},
 //				{name: 'Diane Abbott', avatar: 'http://www.theyworkforyou.com/images/mpsL/10001.jpeg'}];
 
+
+var red = 'darkred',
+	green = 'darkgreen',
+	blue = 'darkblue',
+	yellow = 'darkyellow',
+	gray = 'gray',
+	pink = 'pink',
+	purple = 'purple';
+
+
+var colors = {
+	'Labour': red,
+	'Former Labour': red,
+	'Former Independent': gray,
+	'Former Conservative': blue,
+	'Conservative': blue,
+	'Conservative Peer': blue,
+	'Former Labour Peer': red,
+	'Respect': green,
+	'Former Labour/Co-operative': red,
+	'Labour Peer': red,
+	'Former Independent Labour': red,
+	'Speaker, and ': gray,
+	'Former Liberal Democrat': yellow,
+	'Liberal Democrat': yellow,
+	'DUP Peer, Former DUP': green,
+	'Independent': gray,
+	'Liberal Democrat Peer': yellow,
+	'Bishop': gray,
+	'Former Crossbench Peer': gray,
+	'Former Liberal Democrat Peer': yellow,
+	'Liberal Democrat Peer, Former None': yellow,
+	'Plaid Cymru': green,
+	'Former UUP': yellow,
+	'Former Conservative Peer': blue,
+	'Scottish National Party': pink,
+	'Former Plaid Cymru': green,
+	'Former DUP': green,
+	'Conservative Peer, Former Conservative': blue,
+	'Former Bishop': gray,
+	'Judge Peer': gray,
+	'DUP': green,
+	'Conservative Peer, Former UUP': blue,
+	'UKIP Peer': purple,
+	'Crossbench Peer, Former UUP': blue,
+	'undefined': gray
+};
+
 	/* Add MPs to DOM */
 	_.each(_.keys(mps), function(k) {
-	    var html = tim(mpTemplate, mps[k]);
-	    jQuery('div.below').append(html);
+	    var mp = mps[k],
+	    	html = tim(mpTemplate, mp),
+	    	mpElem = jQuery(html),
+			color = colors[jQuery.trim(mp.party)];
+
+		mpElem.find('.name').css('background-color', color);
+
+	    jQuery('div.below').append(mpElem);
 	})
 
 
