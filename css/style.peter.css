@@ -1,41 +1,79 @@
 body {
 	background-color: #929292;
+	font-family: helvetica;
 }
 
 div.wrapper {
+	width: 1024px;
+	margin: 0 auto;
 }
 
-div.main.upper {
+div.above {
 	background-color: #BDCCD4;
-	margin-top: 50px;
 	height: 320px;
 	position: relative;
 }
 
-div.main.upper div.title {
-	position: absolute;
-	bottom: 0;
-	left: 100px;
-	width: 100%;
+div.banner {
+	background-color: #C1272D;
+	height: 120px;
+	position: relative;
+	z-index: 200;
 }
-div.main.upper h2 {
-	font-size: 65px;
-	line-height: 69%;
+div.banner .title {
+	position: absolute;
+	top: 40px;
+	left: 80px;
+	width: 100%;
+	color: white;
+}
+div.banner h2 {
+	font-size: 40px;
 	font-weight: 900;
 	font-family: helvetica;
 }
-div.main.lower {
-	background-color: #FF0000;
-	height: 140px;
+div.below {
+	background-color: white;
+	height: 2000px; /* makes calculating y position of rebels more predictable */
 }
 
 
 /****** MP POSITIONING AND SIZING ******/
 div.mp {
-	position: absolute;
+	display: inline;
+/*	position: absolute;*/
+}
+div.mp .name {
+	display: none;
+	width: 100%;
+	color: white;
+	background-color: #C1272D;
+	text-align: center;
+	font-size: 12px;
+	padding: 3px 0;
+}
+div.mp img {
+	height: 50px;
+	width: auto;
+	opacity: 0.4;
 }
 
-div.mp.position-0 {
+
+/* rebelling mp */
+div.mp.rebel {
+	position: absolute;
+}
+div.mp.rebel .name {
+	display: block;
+}
+div.mp.rebel img {
+	width: 100%;
+	height: auto;
+	opacity: 1;
+}
+
+
+/*div.mp.position-0 {
 	left: 600px;
 	bottom: 80px;
 }
@@ -49,8 +87,41 @@ div.mp.position-1 {
 }
 div.mp.position-1 img {
 	height: 80px;
+}*/
+
+
+
+
+/****** Buttons ******/
+div.banner .button {
+	position: absolute;
+	top: 27px;
+	cursor: pointer;
+}
+div.banner .button.next {
+	right: 15px;
+}
+div.banner .button.prev {
+	left: 15px;
 }
 
 
+/****** Logos etc. ******/
+#logo {
+	width: 200px;
+	position: absolute;
+	right: -40px;
+	top: -20px;	
+}
+#logo img {
+	width: 100%;
+}
 
-
+#scale {
+	position: absolute;
+	left: 30px;
+	bottom: 0px;
+}
+#scale img {
+	height: 90%;
+}

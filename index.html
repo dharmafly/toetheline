@@ -9,21 +9,38 @@
     </head>
     <body>
         <div class="wrapper">
-            <div class="main upper">
-                <div class="title policy">
+            <div class="above">
+                <div id="logo">
+                    <img src="img/Logo.png">
+                </div>
+                <div id="scale">
+<!--                    <img src="img/icon.png"> -->
+                    <img src="img/ArrowAxis_up.png">
+                </div>
+            </div>
+            <div class="banner">
+                <div class="prev button">
+                    <img src="img/Previous_off.png">
+                </div>
+                <div class="title">
                     <h2>Health and Social Care</h2>
                 </div>
-                <div class="rebels">
+                <div class="next button">
+                    <img src="img/Next_off.png">
                 </div>
             </div>
-            <div class="main lower">
+            <div class="below">
             </div>
+
+<!--            <div class="mps">
+            </div>-->
         </div>
 
         <!-- MICRO-TEMPLATES -->
         <script type="text/tim" class="mp">
-            <div class="mp position-{{position}}">
-                <img src="{{avatar}}" alt="{{name}}" title="{{name}}">
+            <div class="mp {{id}}">
+                <div class="name">{{name}}</div>
+                <img src="{{avatar}}" alt="{{name}}" title="{{name}}" data-mp="{{id}}">
             </div>
         </script>
 
