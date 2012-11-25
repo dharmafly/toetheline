@@ -80,10 +80,25 @@ MP.prototype = {
 	setId: function(path){
 		var matches = path.match(PUBLICWHIP_MP_ID_REGEXP);
 		return matches ? matches[1] : null;
+	},
+	setName: function(){
+		return this.id.replace('')
 	}
 }
 
-function fetchPolicies(url){
+function dataProcessor(Constructor){
+	return function(response){
+		var collection = {};
+
+		_.each(response[0].results, function(data){
+			var item = new Constructor(data.text, data.href);
+			collection[item.id] = item;
+		});
+		return collection;
+	}
+}
+
+function getPolicies(url){
 	return noodle.get({
 		url:  url,
 		type: 'html',
@@ -92,21 +107,30 @@ function fetchPolicies(url){
 	});
 }
 
-function processPolicies(response){
-	var policies = {};
-	_.each(response[0].results, function(data){
-		var policy = new Policy(data.text, data.href);
-		policies[policy.id] = policy;
+function getBillsFromPolicy(url){
+	return noodle.get({
+		url:  url,
+		type: 'html',
+		selector: 'table.votes tr td a',
+		extract: ['href', 'text']
 	});
-	return policies;
 }
 
-function fetchAllPolicyBills(policies){
+function getMPsFromBill(url){
+	return noodle.get({
+		url:  url,
+		type: 'html',
+		selector: '#votetable tr td:first-child a',
+		extract: ['href', 'text']
+	});
+}
+
+function fetchBillsFromPolicies(policies){
 	var promises = [];
 
 	_.each(policies, function(policy){
-		var promise = fetchPolicyBills(policy.url)
-			.pipe(processPolicyBills)
+		var promise = getBillsFromPolicy(policy.url)
+			.pipe(dataProcessor(Bill))
 			.then(function(bills){
 				policy.bills = bills;
 			});
@@ -119,35 +143,24 @@ function fetchAllPolicyBills(policies){
 		});
 }
 
-function fetchPolicyBills(url){
-	return noodle.get({
-		url:  url,
-		type: 'html',
-		selector: 'table.votes tr td a',
-		extract: ['href', 'text']
-	});
-}
-
-function processPolicyBills(response){
-	var bills = {};
-
-	_.each(response[0].results, function(data){
-		var bill = new Bill(data.text, data.href);
-		bills[bill.id] = bill;
-	});
-	return bills;
-}
-
-function fetchAllBillMPs(policies){
-	var promises = [];
+function fetchMPsFromBills(policies){
+	var promises = [],
+		rebels = {};
 
 	_.each(policies, function(policy){
 		_.each(policy.bills, function(bill){
-			var promise = fetchBillMPs(bill.url)
-				.pipe(processBillMPs)
-				.then(function(mps){
-					// TODO: pass mp by reference, as they exist on multiple bills
-					bill.mps = mps;
+			var promise = getMPsFromBill(bill.url)
+				.pipe(dataProcessor(MP))
+				.then(function(rebelsForBill){
+					// Pass MP by reference, as they exist on multiple bills
+					bill.rebels = [];
+
+					_.each(rebelsForBill, function(mp){
+						if (!rebels[mp.id]){
+							rebels[mp.id] = mp;
+						}
+						bill.rebels.push(mp.id);
+					});
 				});
 			promises.push(promise);
 		});
@@ -155,34 +168,37 @@ function fetchAllBillMPs(policies){
 
 	return jQuery.when.apply(jQuery, promises)
 		.pipe(function(){
-			return policies;
+			return rebels;
 		});
 }
 
-function fetchBillMPs(url){
-	return noodle.get({
-		url:  url,
-		type: 'html',
-		selector: '#votetable tr td:first-child a',
-		extract: ['href', 'text']
-	});
-}
-
-function processBillMPs(response){
-	var bills = {};
-	_.each(response[0].results, function(data){
-		var bill = new MP(data.text, data.href);
-		bills[bill.id] = bill;
-	});
-	return bills;
-}
-
 function init(){
-	fetchPolicies(PUBLICWHIP_POLICIES)
-		.pipe(processPolicies)
-		.pipe(fetchAllPolicyBills)
-		.pipe(fetchAllBillMPs)
-		.then(render);
+	var policiesPromise, mpsPromise, policies, mps;
+
+	policiesPromise = getPolicies(PUBLICWHIP_POLICIES)
+		.pipe(dataProcessor(Policy))
+		.pipe(fetchBillsFromPolicies)
+		.pipe(function(data){
+			policies = data;
+			return data;
+		});
+
+	mpsPromise = policiesPromise
+		.pipe(fetchMPsFromBills)
+		.pipe(function(data){
+			mps = data;
+			return data;
+		});
+
+	jQuery.when(policiesPromise, mpsPromise)
+		.then(function(){
+			var data = {
+				mps: mps,
+				policies: policies
+			};
+
+			render(data);
+		});
 }
 
 function render(data){
