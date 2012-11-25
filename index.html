@@ -13,8 +13,10 @@
                 <div id="logo">
                     <img src="img/Logo.png">
                 </div>
+                <div id="fist">
+                    <img src="img/icon.png">
+                </div>
                 <div id="scale">
-<!--                    <img src="img/icon.png"> -->
                     <img src="img/ArrowAxis_up.png">
                 </div>
             </div>
@@ -40,7 +42,10 @@
         <script type="text/tim" class="mp">
             <div class="mp {{id}}">
                 <div class="name">{{title}}</div>
-                <img src="{{avatar}}" alt="{{title}}" title="{{title}}" data-mp="{{id}}">
+                <a href="{{url}}"><img src="{{avatar}}" alt="{{title}}" title="{{title}}" data-mp="{{id}}"></a>
+                <div class="info">
+                    {{title}}
+                </div>
             </div>
         </script>
 
