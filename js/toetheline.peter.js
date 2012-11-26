@@ -124,7 +124,7 @@ var colors = {
 
 		var row = 0;
 		for(var i=0, len = rebels.length; i<len; i++) {
-			if(i >= 10)
+			if(i > 10)
 				break;
 			var rebel = rebels[i];
 
@@ -210,17 +210,18 @@ var colors = {
 	});
     */
 
-
-
-
-
-
-
 	///// INIT
+	/* Add MPs to DOM */
+	_.each(_.keys(mps), function(k) {
+	    var mp = mps[k],
+	    	html = tim(mpTemplate, mp),
+	    	mpElem = jQuery(html),
+			color = colors[jQuery.trim(mp.party)];
+
+		mpElem.find('.name').css('background-color', color);
+
+	    jQuery('div.below').append(mpElem);
+	})
+
 	displayPolicy(policyKeys[0]);
-
-
-//	resetRebels();
-
-
 });
