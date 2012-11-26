@@ -19,7 +19,7 @@ div.banner {
 	background-color: #C1272D;
 	height: 120px;
 	position: relative;
-	z-index: 200;
+	z-index: 99;
 }
 div.banner .title {
 	position: absolute;
@@ -42,13 +42,6 @@ div.below {
 /****** MP POSITIONING AND SIZING ******/
 div.mp {
 	display: inline;
-	transition: top 1s;
-	-moz-transition: top 1s;
-	-webkit-transition: top 1s;
-	-o-transition: top 1s;
-	-ms-transition: top 1s;
-	-khtml-transition: top 1s;
-/*	position: absolute;*/
 }
 div.mp .name {
 	display: none;
@@ -69,6 +62,12 @@ div.mp img {
 /* rebelling mp */
 div.mp.rebel {
 	position: absolute;
+	transition: all 0.38s ease-in;
+	-moz-transition: all 0.38s ease-in;
+	-webkit-transition: all 0.38s ease-in;
+	-o-transition: all 0.38s ease-in;
+	-ms-transition: all 0.38s ease-in;
+	-khtml-transition: all 0.38s ease-in;
 }
 div.mp.rebel .name {
 	display: block;

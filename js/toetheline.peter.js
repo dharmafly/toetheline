@@ -3,6 +3,7 @@
 jQuery(function() {
     var mpTemplate = jQuery('script[type="text/tim"].mp').text();
 
+/*
     var mps = {
     	diane_abbott: {id: 'diane_abbott', name: 'Diane Abbott', avatar: 'http://www.theyworkforyou.com/images/mpsL/10001.jpeg'},
     	debbie_abrahams: {id: 'debbie_abrahams', name: 'Debbie Abrahams', avatar: 'http://www.theyworkforyou.com/images/mpsL/25034.jpeg'},
@@ -31,6 +32,7 @@ jQuery(function() {
     						{mp: 'debbie_abrahams', rebelliousness: 4.5}, {mp: 'debbie_abrahams1', rebelliousness: 4},
     						{mp: 'debbie_abrahams2', rebelliousness: 2}]}
     };
+    */
 
 
 //    var rebelXPositions = [1024, 600, 300, 700, 200, 800, 100, 900]; //x position (%) of rebels starting from most rebellious
@@ -39,9 +41,9 @@ jQuery(function() {
     var policyIndex = 0;
 
     var rebelDataKeys = _.keys(rebelData);
-    mps = rebelData.mps;
+    var mps = rebelData.mps;
     var mpKeys = _.keys(mps);
-    policies = rebelData.policies;
+    var policies = rebelData.policies;
 
 
 //    var policyKeys = _.keys(policies);
@@ -114,7 +116,9 @@ var colors = {
 
 	function displayPolicy(p) {
 		var width = jQuery('.wrapper').width(),
-			rebelAreaHeight = 200, rebelYScale = 3.5, xCenter = width / 2;
+			rebelAreaHeight = jQuery('.above').height() / 2,
+			rebelYScale = 3,
+			xCenter = width / 2;
 		var policy = policies[p];
 		var rebels = policy.rebels;
 
@@ -124,8 +128,9 @@ var colors = {
 				break;
 			var rebel = rebels[i];
 
-			if(rebel.rebelliousness === 0)
+			if(rebel.rebelliousness === 0){
 				break;
+			}
 
 			var mp = mps[rebel.mp];
 			//console.log('positioning rebel '+rebel.mp);
@@ -151,19 +156,31 @@ var colors = {
 			}
 
 			//console.log(mpElement);
-			mpElement.addClass('rebel')
-				.css('left', x+'px')
-				.css('top',  rebelAreaHeight - (rebel.rebelliousness * rebelYScale) + 'px')
-				.css('width', width+'px')
-				.css('z-index', 100-i);
+			mpElement.addClass('rebel newrebel')
+				.css({
+					left: x+'px',
+					top: rebelAreaHeight - (rebel.rebelliousness * rebelYScale) + 'px',
+					width: width+'px',
+					'z-index': 100-i
+				});
 
 			var ellipsis = policy.title.length > 40 ? '...' : '';
 			jQuery('.banner h2').text(policy.title.slice(0, 40)+ellipsis);
 
 		}
-	}
-	function resetRebels() {
-		jQuery('.mp.rebel').removeClass('rebel');
+
+		jQuery('.rebel').each(function(i, el){
+			var mpElem = jQuery(el);
+
+			// Remove identify
+			if (mpElem.hasClass('newrebel')){
+				mpElem.removeClass('newrebel');
+			}
+			// Send to bottom
+			else {
+				mpElem.removeClass('rebel');
+			}
+		});
 	}
 
 
@@ -173,7 +190,6 @@ var colors = {
 		if(policyIndex >= policyKeys.length)
 			policyIndex = 0;
 
-		resetRebels();
 		displayPolicy(policyKeys[policyIndex]);
 	});
 
@@ -182,16 +198,17 @@ var colors = {
 		if(policyIndex < 0)
 			policyIndex = policyKeys.length - 1;
 
-		resetRebels();
 		displayPolicy(policyKeys[policyIndex]);
 	});
 
 
+	/*
 	jQuery('.mp.rebel').hover(function() {
 		$(this).find('.info').show();
 		alert();
 		console.log($(this).find('.info'));
 	});
+    */
 
 
 
