@@ -53,10 +53,25 @@
         <!-- SCRIPTS -->
         <script src="js/jquery.min.js"></script>
         <script src="js/underscore-min.js"></script>
-        <script src="js/noodle-wrapper.js"></script>
         <script src="js/tinytim.min.js"></script>
         <script src="js/rebel-data.js"></script>
+        <!-- Live data scraping
+        <script src="js/noodle-wrapper.js"></script>
         <script src="js/toetheline.js"></script>
+        -->
         <script src="js/toetheline.peter.js"></script>
+
+        <!-- ga -->
+        <script>
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36592108-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
     </body>
 </html>
