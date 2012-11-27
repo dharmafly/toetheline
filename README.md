@@ -15,9 +15,13 @@ This interactive data visualisation is a prototype for showing which MPs have re
 It is left up to the viewer to decide if these rebels are seen as "free-thinkers" or "trouble-makers".
 
 
-## Created in 1½ days by
+## Created in 1½ days
 
-[Premasagar Rose](http://premasagar.com) ([Dharmafly](http://dharmafly.com)), [Peter Cook](http://www.prcweb.co.uk) and [Chris James](http://www.05creative.com).
+By [Premasagar Rose](http://premasagar.com), [Peter Cook](http://www.prcweb.co.uk) and [Chris James](http://www.05creative.com).
+
+Created for [Rewired State](http://rewiredstate.org)'s [Parliament Hack 2012](http://hacks.rewiredstate.org/events/parlyhack-2012) hack weekend.
+
+**[We won the award](http://hacks.rewiredstate.org/events/parlyhack-2012/toe-the-line)** for making Parliament more transparent.
 
 
 ## "Toe the Line"
