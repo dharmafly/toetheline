@@ -5,7 +5,7 @@
 ***Who are the most rebellious MPs across different policy areas?***  
 ***Who toes the line?***
 
-[![screenshot](https://raw.github.com/dharmafly/toetheline/gh-pages/img/screenshot-1080x640.png)]((http://toetheline.org.uk))
+[![screenshot](https://raw.github.com/dharmafly/toetheline/gh-pages/img/screenshot-1080x640.png)](http://toetheline.org.uk)
 
 
 ## What is it?
