@@ -63,44 +63,39 @@ jQuery(function() {
 	function displayPolicy(p) {
 		var width = jQuery('.wrapper').width(),
 			rebelAreaHeight = jQuery('.above').height() / 2,
-			rebelYScale = 3,
+			rebelYScale = 2.6,
 			xCenter = width / 2;
 		var policy = policies[p];
 		var rebels = policy.rebels;
 
-		var row = 0;
+		var x = 0, width = 130;
+		var xOffset = 0;
+		var scaleFactor = 0.8; //The scale factor from each rebel to the next
+		var spaceFactor = 0.85; //The spacing between rebels
 		for(var i=0, len = rebels.length; i<len; i++) {
-			if(i > 10)
+			if(i > 12)
 				break;
+
 			var rebel = rebels[i];
-
-			if(rebel.rebelliousness === 0){
-				break;
-			}
-
 			var mp = mps[rebel.mp];
 			//console.log('positioning rebel '+rebel.mp);
 			var mpElement = jQuery('div.mp.'+mp.id);
 
-			var width = 90;
-			var xOffset = 0.9 * width * row;
-
 			var even = (i % 2) === 0;
-			if(!even)
-				xOffset = -xOffset;
-			var x = xCenter + xOffset;
 
-			if(i === 0 || even)
-				row++;
-
-			//console.log('row now '+row);
-			//console.log(rebel.rebelliousness);
-
-			if(i===0) {
-				width *= 1.5;
+			if(i !== 0 && !even) {
+				xOffset += spaceFactor * width;
+			}
+			if(!even) {
+				width *= scaleFactor;
+			}
+			if(even) {
+				x = xCenter + xOffset;
+			} else {
+				x = xCenter - xOffset;
 			}
 
-			//console.log(mpElement);
+			//console.log('doing '+i+' even '+even+' width '+width+' xOffset '+xOffset);
 			mpElement.addClass('rebel newrebel')
 				.css({
 					left: x-(width/2)+'px',
@@ -111,7 +106,6 @@ jQuery(function() {
 
 			var ellipsis = policy.title.length > 40 ? '...' : '';
 			jQuery('.banner h2').text(policy.title.slice(0, 40)+ellipsis);
-
 		}
 
 		jQuery('.rebel').each(function(i, el){
