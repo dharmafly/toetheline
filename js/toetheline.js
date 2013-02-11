@@ -60,10 +60,11 @@
 
         ///// LOGIC FOR REBEL POSITIONING
         function displayPolicy(p) {
-            var width = 130, //jQuery('.wrapper').width(),
+            var viewportWidth = jQuery('.wrapper').width(),
+            	width = 130,
                 rebelAreaHeight = jQuery('.above').height() / 2,
                 rebelYScale = 2.6,
-                xCenter = width / 2,
+                xCenter = viewportWidth / 2,
                 policy = policies[p],
                 rebels = policy.rebels,
                 x = 0,
