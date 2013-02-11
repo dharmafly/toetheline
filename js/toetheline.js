@@ -102,7 +102,7 @@
                 mpElement.addClass('rebel newrebel')
                     .css({
                         left: x-(width/2)+'px',
-                        top: rebelAreaHeight - (rebel.rebelliousness * rebelYScale) + 'px',
+                        top: rebelAreaHeight - (rebel.r * rebelYScale) + 'px',
                         width: width+'px',
                         'z-index': 100-i
                     });
