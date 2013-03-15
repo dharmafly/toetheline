@@ -203,6 +203,8 @@
                         'moderately for',
                         'moderately against',
                         'a mixture of for and against'];
+        s = s.replace('Voted', '');
+        s = s.replace('.', '');
         for( var i = 0; i < subs.length; i++) {
             if(s.search(subs[i]) > -1) {
                 s = s.replace( subs[i], '<img src="img/vote__'+subs[i]+'.png">');
