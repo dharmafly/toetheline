@@ -99,7 +99,7 @@
             var mp = mps[event.target.getAttribute('data-mp')];
 
             mp.votingRecordHtml = _.map(mp.votingRecord, function(record){
-                return '<li>' + record + '</li>'
+                return '<li>' + substituteVotingIcon(record) + '</li>'
             }).join('');
 
             $('div.below .mp-info')
@@ -199,7 +199,10 @@
                         'moderately against',
                         'a mixture of for and against'];
         for( var i = 0; i < subs.length; i++) {
-            s = s.replace( subs[i], '<img src="vote__'+subs[i]+'.png">');
+            if(s.search(subs[i]) > -1) {
+                s = s.replace( subs[i], '<img src="img/vote__'+subs[i]+'.png">');
+                break;
+            }
         }
         return s;
     }
