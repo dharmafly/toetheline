@@ -381,6 +381,12 @@ function render(data){
     window.data = data;
     console.log(data);
     console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n*****************');
+
+    /*
+    jQuery('body').empty().append(
+	    jQuery('<textarea/>').val(JSON.stringify(data.mps))
+	);
+	*/
 }
 
 /////
