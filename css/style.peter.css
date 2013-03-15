@@ -42,6 +42,7 @@ div.below {
 /****** MP POSITIONING AND SIZING ******/
 div.mp {
 	display: inline;
+	overflow: hidden;
 }
 div.mp .name {
 	display: none;
@@ -49,7 +50,6 @@ div.mp .name {
 	color: white;
 	background-color: #C1272D;
 	text-align: center;
-	font-size: 12px;
 	padding: 3px 0;
 }
 div.mp img {

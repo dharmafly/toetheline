@@ -97,51 +97,56 @@
     ///// LOGIC FOR REBEL POSITIONING
     function displayPolicy(p) {
         var viewportWidth = jQuery('.wrapper').width(),
-            rebelAreaHeight = jQuery('.above').height() / 2,
+            rebelAreaHeight = jQuery('.above').height() / 1.5,
             xCenter = viewportWidth / 2, // x position of the first (i.e. biggest) rebel
-            imageWidth = 130, // image width of the first rebel
-            rebelYScale = 2.6, // rebelliousness scale factor  in y
-            xOffset = 0, // x horizontal offset from one rebel to the next
-            scaleFactor = 0.8, // the image size scale factor from each rebel to the next
-            spaceFactor = 0.85, // the spacing between rebels
+            firstImageWidth = 120, // image width of the first rebel
+            minImageWidth = 60,
+            xOffset = 60, // x horizontal offset from one rebel to the next
             xPos = 0, // x position of rebel
+            numRebelsToDisplay = 13,
             policy = policies[p],
             rebels = policy.rebels,
-            rebel, mp, mpElement, even, i, len, ellipsis;
+            rebel, mp, mpElement, i, ellipsis, top, displayImageWidth, rHigh, rLow,
+            normR /* normalised rebelliousness [0,1] */;
 
-        for(i=0, len = rebels.length; i < len; i++) {
-            // Just display top 13 rebels
-            if (i > 12) {
-                break;
-            }
+        // Adjust numRebelsToDisplay if there aren't enough rebels in this policy
+        numRebelsToDisplay = numRebelsToDisplay > rebels.length ? rebels.length : numRebelsToDisplay;
 
+        // Calculate scale factor for distributing the rebels over the full height of the area above the line
+        rHigh = rebels[0].r;
+        rLow = rebels[numRebelsToDisplay-1].r;
+        var rebelYScale = rHigh === rLow ? 1 : rebelAreaHeight / (rHigh - rLow);
+
+        for(i = 0; i < numRebelsToDisplay; i++) {
             rebel = rebels[i];
             mp = mps[rebel.mp];
+
+            // Normalise the rebelliousness
+            normR = rHigh === rLow ? 0.5 : ( rebel.r - rLow ) / (rHigh - rLow);
 
             //console.log('positioning rebel '+rebel.mp);
             mpElement = jQuery('div.mp.'+mp.id);
 
-            even = (i % 2) === 0;
+            if( i === 0 ) {
+                xPos = xCenter;
+            } else if ( i%2 === 1) {
+                xPos = xCenter + ( Math.floor( ( i + 1 ) / 2 ) * xOffset );
+            } else {
+                xPos = xCenter - ( Math.floor( ( i + 1 ) / 2 ) * xOffset );                
+            }
 
-            if (i !== 0 && !even) {
-                xOffset += spaceFactor * imageWidth;
-            }
-            if (!even) {
-                imageWidth *= scaleFactor;
-            }
-            if (even) {
-                xPos = xCenter + xOffset;
-            }
-            else {
-                xPos = xCenter - xOffset;
-            }
+            // Calculate location and size
+            top = rebelAreaHeight - (( rebel.r - rLow ) * rebelYScale);
+            displayImageWidth = firstImageWidth * normR < minImageWidth ? minImageWidth : firstImageWidth * normR;
 
             mpElement.addClass('rebel newrebel')
                 .css({
-                    left: xPos-(imageWidth/2)+'px',
-                    top: rebelAreaHeight - (rebel.r * rebelYScale) + 'px',
-                    width: imageWidth+'px',
-                    'z-index': 100-i
+                    left: xPos-(displayImageWidth /2)+'px',
+                    top: top + 'px',
+                    width: displayImageWidth +'px',
+                    height: displayImageWidth * 1.6 + 'px',
+                    'z-index': 100-i,
+                    'font-size' : 10 + normR * 2 + 'px'
                 });
 
             ellipsis = policy.title.length > 40 ? '...' : '';
@@ -170,6 +175,7 @@
         .then(function(mpsResponse, policiesResponse){
             mps = mpsResponse[0];
             policies = policiesResponse[0];
+            // console.log(mps, policies);
             init();
         });
 }());
