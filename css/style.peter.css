@@ -1,6 +1,6 @@
 body {
 	background-color: #929292;
-	font-family: helvetica;
+	font-family: helvetica, sans-serif;
 }
 
 div.wrapper {
@@ -96,16 +96,12 @@ div.below div.mp-info {
 	position: absolute;
 	top: 20px;
 	left: 60px;
-	width: 430px;
+	width: 390px;
 	opacity: 0.9;
 	display: none;
 	background-color: white;
 	z-index: 100;
-}
-.mp-info h1 {
-	font-weight:bold;
-	font-size:1.6em;
-	color:#333;
+	padding: 2em;
 }
 
 .mp-info em {
@@ -113,21 +109,38 @@ div.below div.mp-info {
 }
 
 .mp-info ul {
+	/*
 	list-style: disc;
 	list-style-position: inside;
-	margin:0.38em;
+	*/
+	margin: 1em 0 0;
+}
+
+.mp-info li {
+	margin: 20px 0;
 }
 
 /* fake stat */
 div.below div.stat {
 	position: absolute;
-	top: 40px;
+	top: 20px;
 	left: 530px;
 	width: 430px;
 	height: 200px;
 	opacity: 0.9;
 	background-color: white;
 	z-index: 100;
+}
+div.below div.stat h1 {
+	margin-top:1em;
+	margin-left:1em;
+}
+
+.mp-info h1, div.below div.stat h1 {
+	font-weight:bold;
+	font-size:1.6em;
+	color:#c1272d;
+	margin-bottom:0.2em;
 }
 
 
