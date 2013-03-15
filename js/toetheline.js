@@ -177,6 +177,15 @@
         });
     }
 
+
+    ///// HELPER FUNCTIONS
+    // function substituteVotingIcon(s) {
+    //     var subs = [
+    //         {find: , replace: }
+    //     ];
+    // }
+
+
     // Get data
     jQuery.when(
             jQuery.getJSON('data/mps'),
