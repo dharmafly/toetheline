@@ -189,12 +189,20 @@
     }
 
 
-    ///// HELPER FUNCTIONS
-    // function substituteVotingIcon(s) {
-    //     var subs = [
-    //         {find: , replace: }
-    //     ];
-    // }
+    /// HELPER FUNCTIONS
+    function substituteVotingIcon(s) {
+        var subs = [    'very strongly for',
+                        'very strongly against',
+                        'strongly for',
+                        'strongly against',
+                        'moderately for',
+                        'moderately against',
+                        'a mixture of for and against'];
+        for( var i = 0; i < subs.length; i++) {
+            s = s.replace( subs[i], '<img src="vote__'+subs[i]+'.png">');
+        }
+        return s;
+    }
 
 
     // Get data
