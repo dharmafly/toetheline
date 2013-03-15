@@ -105,7 +105,12 @@
             $('div.below .mp-info')
                 .html(tim(mpInfoTemplate, mp))
                 .fadeIn();
+
             return false;
+        });
+
+        jQuery('.next.button, .prev.button').on('click', function(){
+            $('div.below .mp-info').fadeOut();
         });
     }
 
