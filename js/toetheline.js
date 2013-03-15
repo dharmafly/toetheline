@@ -107,7 +107,8 @@
             policy = policies[p],
             rebels = policy.rebels,
             rebel, mp, mpElement, i, ellipsis, top, displayImageWidth, rHigh, rLow,
-            normR /* normalised rebelliousness [0,1] */;
+            normR /* normalised rebelliousness [0,1] */,
+            policyTemplate = jQuery('script[type="text/tim"].policy').text();
 
         // Adjust numRebelsToDisplay if there aren't enough rebels in this policy
         numRebelsToDisplay = numRebelsToDisplay > rebels.length ? rebels.length : numRebelsToDisplay;
@@ -150,7 +151,10 @@
                 });
 
             ellipsis = policy.title.length > 40 ? '...' : '';
-            jQuery('.banner h2').text(policy.title.slice(0, 40)+ellipsis);
+            jQuery('.banner h2').html(tim(policyTemplate, {
+                name: policy.title.slice(0, 40)+ellipsis,
+                url: policy.url
+            }));
         }
 
         jQuery('.rebel').each(function(i, el){

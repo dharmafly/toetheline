@@ -26,12 +26,13 @@ div.banner .title {
 	top: 40px;
 	left: 80px;
 	width: 100%;
-	color: white;
 }
-div.banner h2 {
+div.banner h2 a {
 	font-size: 40px;
 	font-weight: 900;
 	font-family: helvetica;
+	text-decoration: none;
+	color: white;
 }
 div.below {
 	background-color: white;
