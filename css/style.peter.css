@@ -94,14 +94,28 @@ div.mp .info {
 /* mp info popup */
 div.below div.mp-info {
 	position: absolute;
-	top: 40px;
+	top: 20px;
 	left: 60px;
 	width: 430px;
-	height: 200px;
 	opacity: 0.9;
 	display: none;
 	background-color: white;
 	z-index: 100;
+}
+.mp-info h1 {
+	font-weight:bold;
+	font-size:1.6em;
+	color:#333;
+}
+
+.mp-info em {
+	font-style: italic;
+}
+
+.mp-info ul {
+	list-style: disc;
+	list-style-position: inside;
+	margin:0.38em;
 }
 
 /* fake stat */
@@ -116,8 +130,6 @@ div.below div.fake-stat {
 	background-color: white;
 	z-index: 100;
 }
-
-
 
 
 /****** Buttons ******/

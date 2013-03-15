@@ -92,8 +92,19 @@
 
         displayPolicy(policyKeys[0]);
 
-        jQuery('div.below').on('click', '.mp.rebel', function() {
-            $('div.below .mp-info').fadeIn();
+        var mpInfoTemplate = jQuery('script[type="text/tim"].template-mp-info').text(),
+            votingRecordTemplate = jQuery('script[type="text/tim"].template-voting-record').text();
+
+        jQuery('div.below').on('click', '.mp.rebel', function(event) {
+            var mp = mps[event.target.getAttribute('data-mp')];
+
+            mp.votingRecordHtml = _.map(mp.votingRecord, function(record){
+                return '<li>' + record + '</li>'
+            }).join('');
+
+            $('div.below .mp-info')
+                .html(tim(mpInfoTemplate, mp))
+                .fadeIn();
             return false;
         });
     }
