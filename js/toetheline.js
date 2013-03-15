@@ -91,6 +91,11 @@
         });
 
         displayPolicy(policyKeys[0]);
+
+        jQuery('div.below').on('click', '.mp.rebel', function() {
+            $('div.below .mp-info').fadeIn();
+            return false;
+        });
     }
 
 
@@ -180,7 +185,6 @@
         .then(function(mpsResponse, policiesResponse){
             mps = mpsResponse[0];
             policies = policiesResponse[0];
-            // console.log(mps, policies);
             init();
         });
 }());
