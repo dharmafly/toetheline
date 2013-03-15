@@ -35,6 +35,7 @@ div.banner h2 a {
 	color: white;
 }
 div.below {
+	position: absolute;
 	background-color: white;
 	height: 3000px; /* makes calculating y position of rebels more predictable */
 }
@@ -79,30 +80,24 @@ div.mp.rebel img {
 	opacity: 1;
 }
 
-/* mp info popup */
 div.mp .info {
 	position: absolute;
 	display: none;
 }
 
 
-/*div.mp.position-0 {
-	left: 600px;
-	bottom: 80px;
+/* mp info popup */
+div.below div.mp-info {
+	position: absolute;
+	top: 40px;
+	left: 60px;
+	width: 430px;
+	height: 200px;
+	opacity: 0.9;
+	display: none;
+	background-color: white;
+	z-index: 100;
 }
-div.mp.position-0 img {
-	height: 100px;
-}
-
-div.mp.position-1 {
-	left: 500px;
-	bottom: 20px;
-}
-div.mp.position-1 img {
-	height: 80px;
-}*/
-
-
 
 
 /****** Buttons ******/

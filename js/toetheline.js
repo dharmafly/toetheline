@@ -97,7 +97,8 @@
     ///// LOGIC FOR REBEL POSITIONING
     function displayPolicy(p) {
         var viewportWidth = jQuery('.wrapper').width(),
-            rebelAreaHeight = jQuery('.above').height() / 1.5,
+            rebelAreaHeight = 210,
+            bannerHeight = 120,
             xCenter = viewportWidth / 2, // x position of the first (i.e. biggest) rebel
             firstImageWidth = 120, // image width of the first rebel
             minImageWidth = 60,
@@ -137,7 +138,7 @@
             }
 
             // Calculate location and size
-            top = rebelAreaHeight - (( rebel.r - rLow ) * rebelYScale);
+            top = - ( rebelAreaHeight + (( rebel.r - rLow ) * rebelYScale) + 15 );
             displayImageWidth = firstImageWidth * normR < minImageWidth ? minImageWidth : firstImageWidth * normR;
 
             mpElement.addClass('rebel newrebel')
