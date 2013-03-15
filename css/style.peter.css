@@ -74,6 +74,11 @@ div.mp.rebel {
 div.mp.rebel .name {
 	display: block;
 }
+div.mp.rebel .name a {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
 div.mp.rebel img {
 	width: 100%;
 	height: auto;

@@ -44,8 +44,10 @@
         <!-- MICRO-TEMPLATES -->
         <script type="text/tim" class="mp">
             <div class="mp {{id}}">
-                <div class="name">{{title}}</div>
-                <a href="{{url}}" target="_blank"><img src="{{avatar}}" alt="{{title}}" title="{{title}}" data-mp="{{id}}"></a>
+                <div class="name">
+                    <a title="See {{title}} on the Public Whip" href="{{url}}" target="_blank">{{title}}</a>
+                </div>
+                <a title="{{title}} on the Public Whip" href="{{url}}" target="_blank"><img src="{{avatar}}" alt="{{title}}" data-mp="{{id}}"></a>
                 <div class="info">
                     {{title}}
                 </div>
@@ -53,7 +55,7 @@
         </script>
 
         <script type="text/tim" class="policy">
-            <a href="{{url}}">{{name}}</a>
+            <a title="See this policy on the Public Whip" href="{{url}}" target="_blank">{{name}}</a>
         </script>
 
         <!-- SCRIPTS -->
