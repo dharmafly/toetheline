@@ -119,14 +119,13 @@ div.below div.mp-info {
 }
 
 /* fake stat */
-div.below div.fake-stat {
+div.below div.stat {
 	position: absolute;
 	top: 40px;
 	left: 530px;
 	width: 430px;
 	height: 200px;
 	opacity: 0.9;
-	display: none;
 	background-color: white;
 	z-index: 100;
 }
